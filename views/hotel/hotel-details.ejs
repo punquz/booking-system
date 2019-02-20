@@ -1,0 +1,32 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/product.css">
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+
+    <main>
+            <div class="grid">
+                    <article class="card product-item">
+                        <header class="card__header">
+                            <h1 class="product__title"><%= hotel.title %></h1>
+                        </header>
+                        <div class="card__image">
+                            <img src="<%= hotel.imageUrl %>"
+                                alt="No Image Found">
+                        </div>
+                        <div class="card__content">
+                            <h2 class="product__price">Rs. <%= hotel.price %></h2>
+                            <p class="product__description"><%= hotel.description %></p>
+                        </div>
+                        <div class="card__actions">
+                            <!-- <a href="/hotels/<%= hotel.id %>" class="btn">Details</a> -->
+                            <form action="/book-now" method="post">
+                                <button class="btn" type="submit">Book Now</button>
+                            </form>
+                        </div>
+                    </article>
+            </div>
+    </main>
+
+    <%- include('../includes/end.ejs') %>

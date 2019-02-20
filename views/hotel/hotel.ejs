@@ -1,0 +1,43 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/product.css">
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+
+    <main>
+        <% if (hotels.length > 0) { %>
+            <div class="grid">
+                <% for (let hotel of hotels) { %>
+                    <article class="card product-item">
+                        <header class="card__header">
+                            <h1 class="product__title"><%= hotel.hotelName %></h1>
+                        </header>
+                        <div class="card__image">
+                            <img src="<%= hotel.images %>"
+                                alt="No Image Found">
+                        </div>
+                        <div class="card__content">
+                            <h2 class="product__price">Rs. <%
+                                hotels.map(function(hit){
+                                    hit.rooms.map(function(room){
+                                        return room;
+                                   }) %>
+                                   <%= room.roomPrice %>
+                               <% })%></h2>
+                            <p class="product__description"><%= hotel.description %></p>
+                        </div>
+                        <div class="card__actions">
+                            <a href="/hotels/<%= hotel.id %>" class="btn">Details</a>
+                            <form action="/book-now" method="post">
+                                <button class="btn">Book Now</button>
+                            </form>
+                        </div>
+                    </article>
+                <% } %>
+            </div>
+        <% } else { %>
+            <h1>No Products Found!</h1>
+        <% } %>
+    </main>
+<%- include('../includes/end.ejs') %>
