@@ -31,7 +31,7 @@ const hotelSchema = new Schema({
     images: {
         type: String
     },
-    rooms: [{
+    rooms: {
         roomType: {
             type: String,
             required : true
@@ -48,7 +48,7 @@ const hotelSchema = new Schema({
             type: Number,
             required : true
         },
-    }],
+    },
     description: {
         type: String,
         required: true

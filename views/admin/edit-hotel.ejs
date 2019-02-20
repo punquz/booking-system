@@ -7,25 +7,57 @@
    <%- include('../includes/navigation.ejs') %>
 
     <main>
-        <h2 class="center">Add a new Hotel</h2>
-        <form class="product-form" action="/admin/add-hotel" method="POST">
+        <h2 class="center">Edit a Hotel</h2>
+        <form class="product-form" action="/admin/update-hotel" method="POST">
             <div class="form-control">
-                <label for="title">Title</label>
-                <input type="text" name="title" id="title" value="<%= hotel.title %>">
+                <label for="title">Hotel Name</label>
+                <input type="text" name="hotelName" id="hotelName" value="<%= hotel.hotelName %>">
             </div>
             <div class="form-control">
-                <label for="imageUrl">ImageUrl</label>
-                <input type="text" name="imageUrl" id="imageUrl" value="<%= hotel.imageUrl %>">
+                <label for="title">Hotel Address</label>
+                <input type="text" name="hotelAddress" id="hotelAddress" value="<%= hotel.hotelAddress %>">
             </div>
             <div class="form-control">
-                <label for="price">Price</label>
-                <input type="number" name="price" id="price" value="<%= hotel.price %>">
+                <label for="title">City</label>
+                <input type="text" name="city" id="city" value="<%= hotel.city %>">
+            </div>
+            <div class="form-control">
+                <label for="title">Province</label>
+                <input type="text" name="province" id="province" value="<%= hotel.province %>">
+            </div>
+            <div class="form-control">
+                <label for="title">Zip Code</label>
+                <input type="text" name="zipCode" id="zipCode" value="<%= hotel.zipCode %>">
+            </div>
+            <div class="form-control">
+                <label for="title">Stars</label>
+                <input type="text" name="stars" id="stars" value="<%= hotel.stars %>">
+            </div>
+            <div class="form-control">
+                <label for="title">Image</label>
+                <input type="text" name="images" id="images" value="<%= hotel.images %>">
+            </div>
+            <div class="form-control">
+                <label for="title">Room Type</label>
+                <input type="text" name="roomType" id="roomType" value="<%= hotel.rooms.roomType %>">
+            </div>
+            <div class="form-control">
+                <label for="imageUrl">Room Capacity</label>
+                <input type="text" name="roomCapacity" id="roomCapacity" value="<%= hotel.rooms.roomCapacity %>">
+            </div>
+            <div class="form-control">
+                <label for="price">Room Price</label>
+                <input type="number" name="roomPrice" id="roomPrice" value="<%= hotel.rooms.roomPrice %>">
+            </div>
+            <div class="form-control">
+                <label for="price">Number Of Rooms</label>
+                <input type="number" name="noOfRooms" id="noOfRooms" value="<%= hotel.rooms.noOfRooms %>">
             </div>
             <div class="form-control">
                 <label for="description">Description</label>
                 <textarea name="description" id="description" cols="" rows="10" ><%= hotel.description %></textarea>
             </div>
-
+            <input type="hidden" name="hotelId" value="<%= hotel._id %>">
             <button class="btn" type="submit">Update Hotel</button>
         </form>
     </main>

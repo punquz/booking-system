@@ -18,5 +18,10 @@ router.post('/add-hotel', adminController.postAddHotels);
 // edit a hotel
 router.get('/edit-hotel/:hotelId', adminController.getEditHotel);
 
+//post update hotel
+router.post('/update-hotel', adminController.postUpdateHotel);
+
+//post delete a hotel
+router.post('/delete-hotel', adminController.postDeleteHotel);
 
 module.exports = router;

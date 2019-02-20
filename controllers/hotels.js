@@ -10,11 +10,14 @@ exports.getHome = (req, res, next) => {
 
 exports.getHotels =  (req, res, next) => {
     Hotel.find({}, function(err, hotels){
-       if(err) {
-           console.log(err);
-       }
+        if(err) {
+            console.log(err);
+        }
+       let data = hotels.map(function(hit){
+            return hit;
+        });
         res.render('hotel/hotel', {
-            hotels: hotels,
+            hit: data,
             pageTitle: 'Home',
             path: '/hotels'
           });
@@ -24,16 +27,16 @@ exports.getHotels =  (req, res, next) => {
 
 exports.getHotelDetail = (req, res, next) => {
     const hotelID = req.params.hotelId;
-    Hotel.findById(hotelID, hotel => {
+    Hotel.findById(hotelID)
+    .then(hotels => {
         res.render('hotel/hotel-details', {
-            hotel: hotel,
-            pageTitle: hotel.title,
+            hotel: hotels,
+            pageTitle: hotels.title,
             path: '/hotels'
         })
-    });
-    // res.render('hotel/hotel-details', {
-    //     pageTitle: ""
-    // }) 
+    })
+    .catch(err =>  console.log(err));
+    
 }
 
 exports.getBooking = (req, res, next) => {
