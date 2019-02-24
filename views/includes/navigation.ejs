@@ -1,21 +1,33 @@
 <header class="main-header">
     <nav class="main-header__nav">
         <ul class="main-header__item-list">
-            <li class="main-header__item"><a class="<%= path === '/' ? 'active' : '' %>" href="/">Home</a></li>
-            <li class="main-header__item"><a class="<%= path === '/hotels' ? 'active' : '' %>" href="/hotels">Hotels</a></li>
-            <li class="main-header__item"><a class="<%= path === '/mybooking' ? 'active' : '' %>" href="/mybooking">My Bookings</a></li>
+            
+            <% if (isAuthenticated && isAdmin.admin === 1) { %>
             <li class="main-header__item"><a class="<%= path === '/admin/add-hotel' ? 'active' : '' %>" href="/admin/add-hotel">Add Hotel</a></li>
             <li class="main-header__item"><a class="<%= path === '/admin/hotels' ? 'active' : '' %>" href="/admin/hotels">Admin Hotels</a></li>
+            <li class="main-header__item"><a class="<%= path === '/mybooking' ? 'active' : '' %>" href="/admin/mybooking">My Bookings</a></li> 
+            <% } else { %>
+            <li class="main-header__item"><a class="<%= path === '/' ? 'active' : '' %>" href="/">Home</a></li>
+            <li class="main-header__item"><a class="<%= path === '/hotels' ? 'active' : '' %>" href="/hotels">Hotels</a></li>
+            <% } %>
+        </ul>
+        <ul class="main-header__item-list">
+                <% if (!isAuthenticated) { %>
+                   <li class="main-header__item">
+                        <a class="<%= path === '/login' ? 'active' : '' %>" href="/login">Login</a>
+                    </li> 
+                    
+                    <li class="main-header__item">
+                            <a class="<%= path === '/signup' ? 'active' : '' %>" href="/signup">SignUp</a>
+                    </li>
+                    <% } else { %>
+                    <li class="main-header__item">
+                        <form action="/logout" method="post">
+                            <button type="submit">LogOut</button>
+                        </form>
+                    </li>
+                    <% } %>
         </ul>
     </nav>
 </header>
 
-<nav class="mobile-nav">
-        <ul class="mobile-nav__item-list">
-            <li class="mobile-nav__item"><a class="<%= path === '/' ? 'active' : '' %>" href="/">Home</a></li>
-            <li class="mobile-nav__item"><a class="<%= path === '/hotels' ? 'active' : '' %>" href="/hotels">Hotels</a></li>
-            <li class="mobile-nav__item"><a class="<%= path === '/mybooking' ? 'active' : '' %>" href="/mybooking">My Bookings</a></li>
-            <li class="mobile-nav__item"><a class="<%= path === '/admin/add-hotel' ? 'active' : '' %>" href="/admin/add-hotel">Add Hotel</a></li>
-            <li class="mobile-nav__item"><a class="<%= path === '/admin/hotels' ? 'active' : '' %>" href="/admin/hotels">Admin Hotels</a></li>
-        </ul>
-</nav>

@@ -4,7 +4,9 @@ const Hotel = require('../models/hotel');
 exports.getAddHotels =  (req, res, next) => {
     res.render('admin/add-hotel', {
       pageTitle: 'Add Hotel',
-      path: '/admin/add-hotel'
+      path: '/admin/add-hotel',
+      isAuthenticated: req.session.isLoggedIn,
+      isAdmin: req.session.user
     });
   }
 
@@ -14,12 +16,15 @@ exports.getEditHotel = (req, res, next) => {
     Hotel.findById(hotelID)
     .then(hotel => {
       if(!hotel) {
-        return res.redirect('/');
+        return res.redirect('/admin/hotels');
       }
       res.render('admin/edit-hotel', {
         hotel: hotel,
         pageTitle: hotel.title,
-        path: ''
+        path: '',
+        isAuthenticated: req.session.isLoggedIn,
+        isAdmin: req.session.user
+
     })
     })
 }
@@ -58,7 +63,7 @@ exports.postAddHotels =  (req, res, next) => {
     hotel.save()
     .then(result => {
       console.log('added hotel');
-      res.redirect('/');
+      res.redirect('/admin/hotels');
     })
     .catch(err => console.log(err));
   }
@@ -76,7 +81,10 @@ exports.postAddHotels =  (req, res, next) => {
       res.render('admin/hotel-list', {
           hit: data,
           pageTitle: 'Admin Hotels',
-          path: '/admin/hotels'
+          path: '/admin/hotels',
+          isAuthenticated: req.session.isLoggedIn,
+          isAdmin: req.session.user
+
         });
   });  
   }
@@ -130,3 +138,25 @@ exports.postAddHotels =  (req, res, next) => {
     })
     .catch(err => console.log(err));
   }
+
+  //all hotel bookings
+  exports.getBooking = (req, res, next) => {
+    // BookHotel.find({}, function(err, hits) {
+    //     // let data = hits.map((hit) => {
+    //     //     console.log(hit);
+    //     //     return hit;
+    //     // })
+    //     console.log(hits);
+    //     Hotel.findById(hits[1].bookings)
+    //     .then(result => {
+    //         console.log(result);
+    //     })
+    //     .catch(err => console.log(err))
+    // })
+    res.render('admin/booking-hotels', {
+        pageTitle: "My Bookings",
+        path: '/mybooking',
+        isAuthenticated: req.session.isLoggedIn,
+        isAdmin: req.session.user
+    })
+}

@@ -23,9 +23,7 @@
                         </div>
                         <div class="card__actions">
                             <a href="/hotels/<%= hits.id %>" class="btn">Details</a>
-                            <form action="/book-now" method="post">
-                                <button class="btn">Book Now</button>
-                            </form>
+                            <a href="/bookhotel/<%= hits.id %>" class="btn">Book Now</a>
                         </div>
                     </article>
                 <% } %>

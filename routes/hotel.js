@@ -18,6 +18,11 @@ router.get('/hotels', hotelsController.getHotels);
 //display specific hotel
 router.get('/hotels/:hotelId', hotelsController.getHotelDetail);
 
-router.get('/mybooking', hotelsController.getBooking);
+
+//get booking page
+router.get('/bookhotel/:bookId', hotelsController.getBookHotel);
+
+//post book hotel
+router.post('/bookhotel', hotelsController.postBookhotel);
 
 module.exports = router;

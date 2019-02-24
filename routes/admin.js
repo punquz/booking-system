@@ -24,4 +24,8 @@ router.post('/update-hotel', adminController.postUpdateHotel);
 //post delete a hotel
 router.post('/delete-hotel', adminController.postDeleteHotel);
 
+//hotel bokkings
+router.get('/mybooking', adminController.getBooking);
+
+
 module.exports = router;

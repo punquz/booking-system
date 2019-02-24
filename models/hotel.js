@@ -49,6 +49,10 @@ const hotelSchema = new Schema({
             required : true
         },
     },
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
     description: {
         type: String,
         required: true
