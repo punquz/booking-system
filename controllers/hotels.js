@@ -101,3 +101,31 @@ exports.postBookhotel = (req, res, next) => {
           console.log(err);
       })
 }
+
+//booking status
+exports.getBookingStatus = (req, res, next) => {
+    res.render('hotel/booking-status', {
+        path: '/status',
+        isAdmin: false,
+        isAuthenticated: false,
+        pageTitle: 'Booking status'
+    })
+}
+exports.postBookingStatus = (req, res, next) => {
+    let Id = req.body.search;
+   BookHotel.findById(Id)
+   .then(hotel => {
+           Hotel.findById(hotel.bookings)
+           .then(hits => {
+            res.render('hotel/booking-ticket-search', {
+                path: '/status',
+                isAdmin: false,
+                isAuthenticated: false,
+                pageTitle: 'Booking status',
+                hotel: hotel,
+                hits: hits
+            })
+           })  
+   })
+   .catch(err => console.log(err));
+}

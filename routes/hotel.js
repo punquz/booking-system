@@ -25,4 +25,9 @@ router.get('/bookhotel/:bookId', hotelsController.getBookHotel);
 //post book hotel
 router.post('/bookhotel', hotelsController.postBookhotel);
 
+//booking status
+router.get('/bookingstatus', hotelsController.getBookingStatus);
+//post booking status
+router.post('/bookingstatus', hotelsController.postBookingStatus);
+
 module.exports = router;
