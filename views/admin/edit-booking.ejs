@@ -1,0 +1,44 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/product.css">
+</head>
+
+<body>
+   <%- include('../includes/navigation.ejs') %>
+
+    <main>
+        <h2 class="center">Edit a Booking</h2>
+        <form class="product-form" action="/admin/update-booking" method="POST">
+            <div class="form-control">
+                <label for="title">First Name</label>
+                <input type="text" name="firstName" id="firstName" value="<%= hits.firstName %>">
+            </div>
+            <div class="form-control">
+                <label for="title">Last Name</label>
+                <input type="text" name="lastName" id="hotelName" value="<%= hits.lastName %>">
+            </div>
+            <div class="form-control">
+                <label for="title">Address</label>
+                <input type="text" name="address" id="address" value="<%= hits.address %>">
+            </div>
+            <div class="form-control">
+                <label for="title">Room Type</label>
+                <input type="text" name="roomType" id="roomType" value="<%= hotel.rooms.roomType %>">
+            </div>
+            <div class="form-control">
+                <label for="imageUrl">Room Capacity</label>
+                <input type="text" name="roomCapacity" id="roomCapacity" value="<%= hotel.rooms.roomCapacity %>">
+            </div>
+            <div class="form-control">
+                <label for="price">Room Price</label>
+                <input type="number" name="roomPrice" id="roomPrice" value="<%= hotel.rooms.roomPrice %>">
+            </div>
+            <div class="form-control">
+                <label for="price">Number Of Rooms</label>
+                <input type="number" name="noOfRooms" id="noOfRooms" value="<%= hotel.rooms.noOfRooms %>">
+            </div>
+            <input type="hidden" name="bookingId" value="<%= hits._id %>">
+            <button class="btn" type="submit">Update Booking</button>
+        </form>
+    </main>
+<%- include('../includes/end.ejs') %>

@@ -39,7 +39,8 @@ const bookingSchema = new Schema({
         type: String
     },
     bookings: {
-        type: Schema.Types.ObjectId
+        type: Schema.Types.ObjectId,
+        ref: 'Hotel'
     }
   })
 

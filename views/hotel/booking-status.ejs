@@ -10,6 +10,9 @@
         check your booking status here
     </h2>
     <div class="wrap">
+        <% if(errorMessage) {%>
+            <%= errorMessage %>
+        <% } %>
         <form action="/bookingstatus" method="POST">
             <div class="search">
                 <input type="text" class="searchTerm" name="search" placeholder="Enter Your Unique booking Id...">

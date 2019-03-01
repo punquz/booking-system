@@ -1,0 +1,61 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/forms.css">
+<link rel="stylesheet" href="/css/product.css">
+<link rel="stylesheet" href="/css/auth.css">
+<body>
+    <%- include('../includes/navigation.ejs') %>
+    <h2>Welcome to nas booking portal</h2>
+    <main>
+        <form class="login-form" action="/searchHotel" method="GET">
+            <div class="form-control">
+                <label for="city-hotel">City/Hotel</label>
+                <input type="text" name="hotel" id="hotel" value="<%= hotelName %>">
+            </div>
+            <div class="form-control">
+                <label for="check-in">Check-In</label>
+                <input type="date" name="checkin" id="check-in" value="<%= checkIn %>">
+            </div>
+            <div class="form-control">
+                <label for="check-out">Check-Out</label>
+                <input type="date" name="checkout" id="check-out" value="<%= checkOut %>">
+            </div>
+            <div class="form-control">
+                <label for="guests">Number Of guests</label>
+                <input type="number" name="guests" id="guests" value="<%= guests %>">
+            </div>
+            <div class="form-control">
+                <label for="rooms">Number Of Rooms</label>
+                <input type="number" name="rooms" id="rooms" value="<%= rooms %>">
+            </div>
+            <button class="btn" type="submit">Search</button>
+        </form>
+    </main>
+
+    <main>
+        <% if (data.length > 0) { %>
+            <div class="grid">
+                <% for (let hits of data) { %>
+                    <article class="card product-item">
+                        <header class="card__header">
+                            <h1 class="product__title"><%= hits.hotelName %></h1>
+                        </header>
+                        <div class="card__image">
+                            <img src="<%= hits._source.images %>"
+                                alt="No Image Found">
+                        </div>
+                        <div class="card__content">
+                            <h2 class="product__price">Rs.<%= hits._source.rooms.roomPrice %></h2>
+                            <p class="product__description"><%= hits.description %></p>
+                        </div>
+                        <div class="card__actions">
+                            <a href="/hotels/<%= hits._id %>" class="btn">Details</a>
+                            <a href="/bookhotel/<%= hits.id %>" class="btn">Book Now</a>
+                        </div>
+                    </article>
+                <% } %>
+            </div>
+        <% } else { %>
+            <h1>No Hotels Found!</h1>
+        <% } %>
+    </main>
+    <%- include('../includes/end.ejs') %>

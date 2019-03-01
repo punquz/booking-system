@@ -1,5 +1,32 @@
 <%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/forms.css">
+<link rel="stylesheet" href="/css/auth.css">
 <body>
     <%- include('../includes/navigation.ejs') %>
     <h2>Welcome to nas booking portal</h2>
+    <main>
+        <form class="login-form" action="/searchHotel" method="GET">
+            <div class="form-control">
+                <label for="city-hotel">City/Hotel</label>
+                <input type="text" name="hotel" id="hotel">
+            </div>
+            <div class="form-control">
+                <label for="check-in">Check-In</label>
+                <input type="date" name="checkin" id="check-in">
+            </div>
+            <div class="form-control">
+                <label for="check-out">Check-Out</label>
+                <input type="date" name="checkout" id="check-out">
+            </div>
+            <div class="form-control">
+                <label for="guests">Number Of guests</label>
+                <input type="number" name="guests" id="guests">
+            </div>
+            <div class="form-control">
+                <label for="rooms">Number Of Rooms</label>
+                <input type="number" name="rooms" id="rooms">
+            </div>
+            <button class="btn" type="submit">Search</button>
+        </form>
+    </main>
     <%- include('../includes/end.ejs') %>

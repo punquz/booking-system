@@ -30,4 +30,7 @@ router.get('/bookingstatus', hotelsController.getBookingStatus);
 //post booking status
 router.post('/bookingstatus', hotelsController.postBookingStatus);
 
+//search
+router.get('/searchHotel', hotelsController.searchHotel);
+
 module.exports = router;

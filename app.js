@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const util = require('./util/database');
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
+const flash = require('connect-flash');
 
 
 //error
@@ -44,6 +45,8 @@ app.use(session({
       maxAge: 1000* 60 * 60 *24 * 365
   },
 }))
+
+app.use(flash());
 
 app.use('/admin', adminRoutes);
 app.use(hotelRoutes);
