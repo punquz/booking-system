@@ -49,7 +49,7 @@
                         </div>
                         <div class="card__actions">
                             <a href="/hotels/<%= hits._id %>" class="btn">Details</a>
-                            <a href="/bookhotel/<%= hits.id %>" class="btn">Book Now</a>
+                            <a href="/bookhotel/<%= hits._id %>?checkin=<%= checkIn%>&checkout=<%= checkOut%>&guests=<%= guests%>&rooms=<%= rooms%>" class="btn">Book Now</a>
                         </div>
                     </article>
                 <% } %>
@@ -58,4 +58,6 @@
             <h1>No Hotels Found!</h1>
         <% } %>
     </main>
+
+    
     <%- include('../includes/end.ejs') %>

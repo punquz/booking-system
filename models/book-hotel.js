@@ -38,9 +38,28 @@ const bookingSchema = new Schema({
     comment: {
         type: String
     },
+    checkIn: {
+        type: Date,
+        required: true
+    },
+    checkOut: {
+        type: Date,
+        required: true
+    },
+    noOfGuest: {
+        type: Number,
+        required: true
+    },
+    noOfRoom: {
+        type:Number,
+        required: true
+    },
     bookings: {
         type: Schema.Types.ObjectId,
         ref: 'Hotel'
+    },
+    bookingDate: {
+        type: Date
     }
   })
 

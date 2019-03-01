@@ -3,8 +3,8 @@ const BookHotel = require('../models/book-hotel');
 
 exports.getHome = (req, res, next) => {
     res.render('hotel/index', {
-        pageTitle: 'Home',
-        path: '/',
+        pageTitle: 'Hotels',
+        path: '/hotels',
         activeHome: true,
         isAuthenticated: req.session.isLoggedIn,
         isAdmin: req.session.user
@@ -52,6 +52,10 @@ exports.getHotelDetail = (req, res, next) => {
 
 exports.getBookHotel = (req, res, next) => {
     hotelId = req.params.bookId;
+    const checkIn = req.query.checkin; 
+    const checkOut = req.query.checkout; 
+    const noOfGuest = req.query.guests; 
+    const noOfRoom = req.query.rooms;
     Hotel.findById(hotelId)
     .then(hotel => {
         console.log(hotel);
@@ -59,6 +63,10 @@ exports.getBookHotel = (req, res, next) => {
             pageTitle: "hotel booking",
             path: '/booking hotel',
             hotel: hotel,
+            checkIn: checkIn,
+            checkOut: checkOut,
+            guests: noOfGuest,
+            rooms: noOfRoom,
             isAuthenticated: false,
             isAdmin: false
         })
@@ -79,6 +87,11 @@ exports.postBookhotel = (req, res, next) => {
     const zipCode = req.body.zipCode;
     const comment = req.body.comment;
     const hotelId = req.body.hotelId;
+    const checkIn = req.query.checkin; 
+    const checkOut = req.query.checkout; 
+    const noOfGuest = req.query.guests; 
+    const noOfRoom = req.query.rooms;
+    const bookingDate = new Date(); 
     
     const bookHotel = new BookHotel({
         email: email,
@@ -90,7 +103,12 @@ exports.postBookhotel = (req, res, next) => {
         province: province,
         zipCode: zipCode,
         comment: comment,
-        bookings: hotelId
+        checkIn: checkIn,
+        checkOut: checkOut,
+        noOfGuest: noOfGuest,
+        noOfRoom: noOfRoom,
+        bookings: hotelId,
+        bookingDate: bookingDate
       })
       bookHotel.save()
       .then(result => {
@@ -193,7 +211,6 @@ exports.searchHotel = (req, res, next) => {
         }, function(err, results) {
           if(err) return next(err);
           let data = results.hits.hits.map(function(hit){
-              console.log(hit);
             return hit;
           })
           res.render('hotel/search-hotel', {

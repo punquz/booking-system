@@ -5,7 +5,7 @@
     <%- include('../includes/navigation.ejs') %>
     <h2>Book a hotel</h2>
     <main>
-        <form class="login-form" action="/bookhotel" method="POST">
+        <form class="login-form" action="/bookhotel/?checkin=<%= checkIn%>&checkout=<%= checkOut%>&guests=<%= guests%>&rooms=<%= rooms%>" method="POST">
             <div class="form-control">
                 <label for="email">E-Mail</label>
                 <input type="email" name="email" id="email">

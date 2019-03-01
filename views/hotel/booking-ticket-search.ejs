@@ -27,15 +27,13 @@
         <h4>Name:<%= hotel.firstName + " " +  hotel.lastName%></h4>
         <h4>Address:<%= hotel.address %></h4>
         <h4>Country:<%= hotel.country %></h4>
-        <h4>ZipCode:<%= hotel.zipCode %></h4>
         <h4>HotelName:<%= hits.hotelName %></h4>
         <h4>Room Type:<%= hits.rooms.roomType %></h4>
-        <h4>Room Capacity:<%= hits.rooms.roomCapacity %></h4>
+        <h4>CheckInDate:<%= hotel.checkIn %></h4>
+        <h4>CheckOutDate:<%= hotel.checkOut %></h4>
+        <h4>Number Of Rooms:<%= hotel.noOfRoom %></h4>
         <h4>Price:<%= hits.rooms.roomPrice %></h4>
-        <h4>Number Of Rooms:<%= hits.rooms.noOfRooms %></h4>
-        <h4>HotelAddress:<%= hits.HotelAddress %></h4>
-        <h4>Stars:<%= hits.stars %></h4>
-        <h4>ZipCode:<%= hotel.zipCode %></h4>
+        <h4>Booking date:<%= hotel.bookingDate %></h4>
      </div>
      <% } %>
     <%- include('../includes/end.ejs') %>
