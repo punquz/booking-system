@@ -8,23 +8,23 @@
         <form class="login-form" action="/searchHotel" method="GET">
             <div class="form-control">
                 <label for="city-hotel">City/Hotel</label>
-                <input type="text" name="hotel" id="hotel">
+                <input type="text" name="hotel" id="hotel" required>
             </div>
             <div class="form-control">
                 <label for="check-in">Check-In</label>
-                <input type="date" name="checkin" id="check-in">
+                <input type="date" name="checkin" id="check-in" required>
             </div>
             <div class="form-control">
                 <label for="check-out">Check-Out</label>
-                <input type="date" name="checkout" id="check-out">
+                <input type="date" name="checkout" id="check-out" required>
             </div>
             <div class="form-control">
                 <label for="guests">Number Of guests</label>
-                <input type="number" name="guests" id="guests">
+                <input type="number" name="guests" id="guests" required>
             </div>
             <div class="form-control">
                 <label for="rooms">Number Of Rooms</label>
-                <input type="number" name="rooms" id="rooms">
+                <input type="number" name="rooms" id="rooms" required>
             </div>
             <button class="btn" type="submit">Search</button>
         </form>

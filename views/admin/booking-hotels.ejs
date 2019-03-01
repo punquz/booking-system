@@ -11,10 +11,13 @@
                                 <h1 class="product__title">Name:<%= hits.firstName+ " " + hits.lastName %></h1>
                                 <h1 class="product__title">E-mail:<%= hits.email %></h1>
                                 <h1 class="product__title">Address:<%= hits.address %></h1>
+                                <h1 class="product__title">Phone Number:<%= hits.phone %></h1>
                                 <h1 class="product__title">Room Type:<%= hits.bookings.rooms.roomType %></h1>
                                 <h1 class="product__title">Price:<%= hits.bookings.rooms.roomPrice %></h1>
-                                <h1 class="product__title">Room Capacity:<%= hits.bookings.rooms.roomCapacity %></h1>
-                                <h1 class="product__title">Number Of Rooms:<%= hits.bookings.rooms.noOfRooms %></h1>
+                                <h1 class="product__title">Check In date:<%= hits.checkIn %></h1>
+                                <h1 class="product__title">Check Out date:<%= hits.checkOut %></h1>
+                                <h1 class="product__title">Number Of rooms:<%= hits.noOfRoom %></h1>
+                                <h1 class="product__title">Number Of Guest:<%= hits.noOfGuest %></h1>
                                 <div class="card__actions">
                                         <a href="/admin/edit-booking/<%= hits.id %>" class="btn">Edit</a>
                                     <form action="/admin/delete-booking" method="post">

@@ -143,7 +143,7 @@ exports.postAddHotels =  (req, res, next) => {
   //all hotel bookings
   exports.getBooking = (req, res, next) => {
     BookHotel.find()
-    .select('firstName lastName email address')
+    .select('firstName lastName email address phone checkIn checkOut noOfGuest noOfRoom')
     .populate({ path: 'bookings', select: 'hotelName rooms -_id' })
     .exec(function(err, hits) {
       if(err) console.log(err);
