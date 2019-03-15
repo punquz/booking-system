@@ -71,7 +71,7 @@ exports.postAddHotels =  (req, res, next) => {
 
   //get all hotels
   exports.getHotels =  (req, res, next) => {
-
+    
     Hotel.find({}, function(err, hotels){
       if(err) {
           console.log(err);

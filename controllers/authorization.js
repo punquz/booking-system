@@ -55,7 +55,8 @@ exports.getSignup = (req, res, next) => {
     pageTitle: "SignUp",
     path: "/signup",
     isAuthenticated: false,
-    isAdmin: req.session.user
+    isAdmin: req.session.user,
+    errorMessage: ''
   });
 };
 
@@ -63,6 +64,18 @@ exports.postSignup = (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
   const confirmpassword = req.body.password;
+  const errors = validationResult(req);
+  if(!errors.isEmpty()) {
+    console.log(errors.array());
+    return res.status(422)
+    .render("auth/signup", {
+      pageTitle: "SignUp",
+      path: "/signup",
+      isAuthenticated: false,
+      isAdmin: req.session.user,
+      errorMessage: errors.array()
+    })
+  }
   User.findOne({ email: email })
     .then(userDoc => {
       if (userDoc) {
